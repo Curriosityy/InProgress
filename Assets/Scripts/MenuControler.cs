@@ -20,5 +20,6 @@ public class MenuControler : MonoBehaviour
 
     public void ExitApplication()
     {
+        Application.Quit();
     }
 }
