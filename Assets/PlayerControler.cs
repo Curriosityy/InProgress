@@ -2,12 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum Direction
-{
-    left,
-    right
-}
-
 public class PlayerControler : MonoBehaviour
 {
     public float speed;
@@ -16,19 +10,18 @@ public class PlayerControler : MonoBehaviour
     private int jumpCounter;
     public int maxJumpCount;
     public float gravMultipler = 4f;
-    private float skyRotation = 0;
-    public float maxSpeed;
-    public Direction direction;
     private bool grounded = true;
-    private Vector2 velocity;
+    private Vector2 velocity = Vector2.zero;
     public float movementSmoothing = 0.05f;
     private float moveDir;
     private bool isJumping;
+    public bool isAlive = true;
 
     // Use this for initialization
     private void Start()
     {
         rb = gameObject.GetComponent<Rigidbody2D>();
+        isAlive = true;
     }
 
     private void FixedUpdate()
@@ -50,15 +43,30 @@ public class PlayerControler : MonoBehaviour
 
     public void Move(float move, bool jump)
     {
-        Vector2 targetVelocity = new Vector2(move * 10f, rb.velocity.y);
-        rb.velocity = Vector2.SmoothDamp(rb.velocity, targetVelocity, ref velocity, movementSmoothing);
-        if (jump && jumpCounter < maxJumpCount)
+        if (isAlive)
         {
-            grounded = false;
-            rb.velocity = new Vector2(rb.velocity.x, 0);
-            rb.AddForce(Vector2.up * jumpForce);
-            jumpCounter++;
+            Vector2 targetVelocity = new Vector2(move * 10f, rb.velocity.y);
+            rb.velocity = Vector2.SmoothDamp(rb.velocity, targetVelocity, ref velocity, movementSmoothing);
+            if (jump && jumpCounter < maxJumpCount)
+            {
+                grounded = false;
+                rb.velocity = new Vector2(rb.velocity.x, 0);
+                rb.AddForce(Vector2.up * jumpForce);
+                jumpCounter++;
+            }
         }
+    }
+
+    public void Die()
+    {
+        isAlive = false;
+        GetComponent<BoxCollider2D>().enabled = false;
+        enabled = false;
+    }
+
+    private void OnDisable()
+    {
+        Destroy(this, 1.5f);
     }
 
     // Update is called once per frame
