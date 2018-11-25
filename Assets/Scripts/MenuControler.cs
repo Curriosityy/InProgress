@@ -4,49 +4,18 @@ using UnityEngine;
 
 public class MenuControler : MonoBehaviour
 {
-    public GameObject mainMenu;
-    public GameObject levelSelector;
-    public GameObject options;
-    private bool b_menu;
-    private bool b_levelSelector;
-    private bool b_options;
+    private Camera mainCamera;
+    public Transform[] transforms;
 
     private void Start()
     {
-        b_levelSelector = false;
-        b_menu = true;
-        b_options = false;
+        mainCamera = Camera.main;
+        mainCamera.transform.position = new Vector3(transforms[0].position.x, transforms[0].position.y, mainCamera.transform.position.z);
     }
 
-    public void GoToLevelSelector()
+    public void GoToIMenu(int i)
     {
-        b_levelSelector = true;
-        b_menu = false;
-        b_options = false;
-        SetScenes();
-    }
-
-    public void GoToOptions()
-    {
-        b_levelSelector = false;
-        b_menu = false;
-        b_options = true;
-        SetScenes();
-    }
-
-    public void GoToMenu()
-    {
-        b_levelSelector = false;
-        b_menu = true;
-        b_options = false;
-        SetScenes();
-    }
-
-    private void SetScenes()
-    {
-        mainMenu.SetActive(b_menu);
-        options.SetActive(b_options);
-        levelSelector.SetActive(b_levelSelector);
+        mainCamera.transform.position = new Vector3(transforms[i].position.x, transforms[i].position.y, mainCamera.transform.position.z);
     }
 
     public void ExitApplication()
