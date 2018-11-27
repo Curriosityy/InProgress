@@ -6,7 +6,7 @@ public class Needles : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "player")
+        if (collision.tag == "player" && collision.GetComponent<PlayerControler>().isAlive)
         {
             collision.GetComponent<PlayerControler>().Die();
         }

@@ -1,43 +1,106 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerControler : MonoBehaviour
 {
+    public SpriteRenderer sprite2;
+    private Rigidbody2D rb;
+    private Vector2 velocity = Vector2.zero;
+    private bool isOnWall = false;
+    private bool isGrounded = true;
+
     public float speed;
     public float jumpForce;
-    public Rigidbody2D rb;
-    private int jumpCounter;
-    public int maxJumpCount;
-    public float gravMultipler = 4f;
-    private bool grounded = true;
-    private Vector2 velocity = Vector2.zero;
     public float movementSmoothing = 0.05f;
-    private float moveDir;
-    private bool isJumping;
     public bool isAlive = true;
+    public Vector2 boxSize;
+    private Vector2 rotated;
+
+    [Header("Checkers")]
+    [Space]
+    public Transform grounChecker;
+
+    public Transform leftWallChecker;
+    public Transform rightWallChecker;
+
+    [Header("Layers")]
+    [Space]
+    public LayerMask whatIsGround;
+
+    public LayerMask whatIsWall;
+
+    [Header("Events")]
+    [Space]
+    public UnityEvent onLandEvent;
+
+    public UnityEvent onWallEvent;
+
+    public UnityEvent onDeadEvent;
 
     // Use this for initialization
     private void Start()
     {
         rb = gameObject.GetComponent<Rigidbody2D>();
         isAlive = true;
+        if (onLandEvent == null)
+        {
+            onLandEvent = new UnityEvent();
+        }
+        if (onWallEvent == null)
+        {
+            onWallEvent = new UnityEvent();
+        }
+        if (onDeadEvent == null)
+        {
+            onDeadEvent = new UnityEvent();
+        }
+        rotated = new Vector2(boxSize.y, boxSize.x);
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireCube(grounChecker.transform.position, boxSize);
+        Gizmos.DrawWireCube(leftWallChecker.transform.position, rotated);
+        Gizmos.DrawWireCube(rightWallChecker.transform.position, rotated);
     }
 
     private void FixedUpdate()
     {
-        Move(moveDir * Time.fixedDeltaTime, isJumping);
-    }
+        bool wasGrounded = isGrounded;
+        bool wasOnWall = isOnWall;
+        isGrounded = false;
+        isOnWall = false;
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag == "Ground" || collision.gameObject.tag == "Wall")
+        Collider2D[] colliders = Physics2D.OverlapBoxAll(grounChecker.position, boxSize, 0, whatIsGround);
+        for (int i = 0; i < colliders.Length; i++)
         {
-            jumpCounter = 0;
+            isGrounded = true;
+            if (!wasGrounded && ((Mathf.Sign(rb.velocity.y) == Mathf.Sign(Physics2D.gravity.y)) || rb.velocity.y == 0))
+            {
+                Debug.Log("l");
+                onLandEvent.Invoke();
+            }
         }
-        if (collision.gameObject.tag == "Ground")
+        colliders = Physics2D.OverlapBoxAll(leftWallChecker.position, rotated, 0, whatIsWall);
+        for (int i = 0; i < colliders.Length; i++)
         {
-            grounded = true;
+            isOnWall = true;
+            if (!wasOnWall)
+            {
+                onWallEvent.Invoke();
+            }
+        }
+        colliders = Physics2D.OverlapBoxAll(rightWallChecker.position, rotated, 0, whatIsWall);
+        for (int i = 0; i < colliders.Length; i++)
+        {
+            isOnWall = true;
+            if (!wasOnWall)
+            {
+                onWallEvent.Invoke();
+            }
         }
     }
 
@@ -47,12 +110,12 @@ public class PlayerControler : MonoBehaviour
         {
             Vector2 targetVelocity = new Vector2(move * 10f, rb.velocity.y);
             rb.velocity = Vector2.SmoothDamp(rb.velocity, targetVelocity, ref velocity, movementSmoothing);
-            if (jump && jumpCounter < maxJumpCount)
+            if (jump)
             {
-                grounded = false;
+                Debug.Log("JUMP2");
                 rb.velocity = new Vector2(rb.velocity.x, 0);
                 rb.AddForce(Vector2.up * jumpForce);
-                jumpCounter++;
+                isGrounded = false;
             }
         }
     }
@@ -60,26 +123,10 @@ public class PlayerControler : MonoBehaviour
     public void Die()
     {
         isAlive = false;
-        GetComponent<BoxCollider2D>().enabled = false;
-        enabled = false;
-    }
-
-    private void OnDisable()
-    {
-        Destroy(this, 1.5f);
-    }
-
-    // Update is called once per frame
-    private void Update()
-    {
-        moveDir = Input.GetAxisRaw("Horizontal") * speed;
-        if (Input.GetButtonDown("Jump"))
-        {
-            isJumping = true;
-        }
-        else
-        {
-            isJumping = false;
-        }
+        GetComponent<PolygonCollider2D>().enabled = false;
+        GetComponent<SpriteRenderer>().enabled = false;
+        sprite2.enabled = false;
+        onDeadEvent.Invoke();
+        Destroy(gameObject, 3f);
     }
 }
