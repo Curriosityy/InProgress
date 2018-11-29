@@ -56,10 +56,7 @@ public class ScreenChanger : MonoBehaviour
 
     private void OnLevelWasLoaded(int level)
     {
-        if (level != 0)
-        {
-            animator.SetTrigger("Fade_in");
-        }
+        animator.SetTrigger("Fade_in");
     }
 
     // Update is called once per frame

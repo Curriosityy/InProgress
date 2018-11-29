@@ -6,25 +6,28 @@ using UnityEngine.Events;
 public class MetaControler : MonoBehaviour
 {
     public string playerTag;
+    public int nextLevel;
+
+    public class UnityIntEvent : UnityEvent<int> { };
 
     [Header("Events")]
     [Space]
-    public UnityEvent onPlayerEntered;
+    public UnityIntEvent onPlayerEntered;
 
     private void Start()
     {
         if (onPlayerEntered == null)
         {
-            onPlayerEntered = new UnityEvent();
+            onPlayerEntered = new UnityIntEvent();
         }
-        onPlayerEntered.AddListener(ScreenChanger.gameMaster.GetComponent<ScreenChanger>().FadeToNextLevel);
+        onPlayerEntered.AddListener(ScreenChanger.gameMaster.GetComponent<ScreenChanger>().FadeToLevel);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == playerTag)
         {
-            onPlayerEntered.Invoke();
+            onPlayerEntered.Invoke(nextLevel);
         }
     }
 }

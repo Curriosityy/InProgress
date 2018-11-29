@@ -23,7 +23,8 @@ GameObject:
   - component: {fileID: 50797634925584244}
   - component: {fileID: 114987203590389128}
   - component: {fileID: 60118835614847728}
-  m_Layer: 0
+  - component: {fileID: 60453844484408392}
+  m_Layer: 11
   m_Name: needles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37,7 +38,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1008240107843696}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -50.862427, y: -9.584479, z: -0.05859375}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 4.505, y: 3.212, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -91,10 +92,57 @@ PolygonCollider2D:
       - {x: -0.19999999, y: 0.19}
       - {x: -0.24, y: 0.19}
       - {x: -0.24919415, y: 0.13787602}
-      - {x: -0.2842487, y: -0.18053988}
-      - {x: -0.28758413, y: -0.26303124}
-      - {x: 0.3070336, y: -0.27033344}
-      - {x: 0.25622827, y: 0.1800001}
+      - {x: -0.29042843, y: -0.18053988}
+      - {x: -0.30405465, y: -0.25869933}
+      - {x: 0.3224702, y: -0.26600212}
+      - {x: 0.2593181, y: 0.19010691}
+--- !u!60 &60453844484408392
+PolygonCollider2D:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1008240107843696}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.64, y: 0.64}
+    newSize: {x: 0.64, y: 0.64}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.19903152, y: 0.16033843}
+      - {x: 0.18525626, y: -0.1728318}
+      - {x: 0.14087875, y: 0.16586095}
+      - {x: 0.113606, y: 0.18189617}
+      - {x: 0.08404358, y: 0.15916}
+      - {x: 0.059351776, y: -0.18586674}
+      - {x: 0.024447933, y: 0.15857063}
+      - {x: 0.00011516067, y: 0.17380181}
+      - {x: -0.0204986, y: 0.16532771}
+      - {x: -0.057986785, y: -0.20196341}
+      - {x: -0.087400176, y: 0.16949394}
+      - {x: -0.11313181, y: 0.18387893}
+      - {x: -0.13698362, y: 0.16421786}
+      - {x: -0.17363858, y: -0.17733325}
+      - {x: -0.19588153, y: 0.16628881}
+      - {x: -0.20755002, y: 0.18269515}
+      - {x: -0.22347945, y: 0.18686406}
+      - {x: -0.24123113, y: 0.17208834}
+      - {x: -0.29396453, y: -0.25183654}
+      - {x: 0.31980118, y: -0.26585543}
+      - {x: 0.27590126, y: 0.015473159}
+      - {x: 0.25498945, y: 0.1629937}
+      - {x: 0.23867048, y: 0.1867168}
 --- !u!114 &114987203590389128
 MonoBehaviour:
   m_ObjectHideFlags: 1

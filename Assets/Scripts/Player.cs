@@ -12,6 +12,10 @@ public class Player : MonoBehaviour
     public float fallSpeed = 2.0f;
     private PlayerControler pc;
     private Rigidbody2D rb;
+    public ParticleSystem particleOnDead;
+    public ParticleSystem particleOnRun;
+    public ParticleSystem particleOnJump;
+    private Animator animator;
 
     private void FixedUpdate()
     {
@@ -28,6 +32,7 @@ public class Player : MonoBehaviour
     {
         pc = GetComponent<PlayerControler>();
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
 
     public void OnLand()
@@ -43,13 +48,23 @@ public class Player : MonoBehaviour
 
     public void OnDead()
     {
-        GetComponentInChildren<ParticleSystem>().Emit(80);
+        particleOnDead.Emit(80);
         if (!PlayerPrefs.HasKey("DeadCounter"))
         {
             PlayerPrefs.SetInt("DeadCounter", 0);
             PlayerPrefs.Save();
         }
         PlayerPrefs.SetInt("DeadCounter", PlayerPrefs.GetInt("DeadCounter") + 1);
+    }
+
+    public void onGroundRun()
+    {
+        particleOnRun.Emit(1);
+    }
+
+    public void onJump()
+    {
+        animator.SetTrigger("jump");
     }
 
     // Update is called once per frame
