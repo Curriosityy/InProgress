@@ -82,38 +82,32 @@ public class PlayerControler : MonoBehaviour
         Gizmos.DrawWireCube(rightWallChecker.transform.position, wallCheckerSize);
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.layer == (int)Mathf.Log(whatIsGround.value, 2))
+        {
+            onLandEvent.Invoke();
+        }
+        else if (collision.gameObject.layer == (int)Mathf.Log(whatIsWall.value, 2) && !isGrounded)
+        {
+            onWallEvent.Invoke();
+        }
+    }
+
     private void FixedUpdate()
     {
-        bool wasFalling = isFalling;
+        //bool wasFalling = isFalling;
         bool wasGrounded = isGrounded;
-        bool wasOnWall = isOnWall;
+        //bool wasOnWall = isOnWall;
         isGrounded = false;
-        isOnWall = false;
-        isFalling = false;
-        if (Physics2D.gravity.y < 0)
-        {
-            if (rb.velocity.y <= 0)
-            {
-                isFalling = true;
-            }
-        }
-        else
-        {
-            if (rb.velocity.y > 0)
-            {
-                isFalling = true;
-            }
-        }
+        //isOnWall = false;
+
         Collider2D[] colliders = Physics2D.OverlapBoxAll(grounChecker.position, groundCheckerSize, 0, whatIsGround);
         for (int i = 0; i < colliders.Length; i++)
         {
             isGrounded = true;
-
-            if (!wasGrounded && wasFalling)
-            {
-                onLandEvent.Invoke();
-            }
         }
+        /*
         colliders = Physics2D.OverlapBoxAll(leftWallChecker.position, wallCheckerSize, 0, whatIsWall);
         for (int i = 0; i < colliders.Length; i++)
         {
@@ -131,7 +125,7 @@ public class PlayerControler : MonoBehaviour
             {
                 onWallEvent.Invoke();
             }
-        }
+        }*/
     }
 
     public void Move(float move, bool jump)
@@ -161,6 +155,10 @@ public class PlayerControler : MonoBehaviour
                 Flip();
             }
         }
+    }
+
+    private void Update()
+    {
     }
 
     public void Die()
