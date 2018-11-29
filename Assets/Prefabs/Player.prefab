@@ -321,6 +321,7 @@ MonoBehaviour:
   isAlive: 1
   groundCheckerSize: {x: 0.65, y: 0.12}
   wallCheckerSize: {x: 0.16, y: 0.65}
+  playerSprite: {fileID: 212436589406577644}
   grounChecker: {fileID: 4613617322365110}
   leftWallChecker: {fileID: 4137651070157058}
   rightWallChecker: {fileID: 4933084270627458}

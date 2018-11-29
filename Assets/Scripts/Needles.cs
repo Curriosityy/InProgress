@@ -8,6 +8,7 @@ public class Needles : MonoBehaviour
     {
         if (collision.tag == "player" && collision.GetComponent<PlayerControler>().isAlive)
         {
+            GetComponent<Animator>().SetTrigger("juicy");
             collision.GetComponent<PlayerControler>().Die();
         }
     }

@@ -20,6 +20,7 @@ public class PlayerControler : MonoBehaviour
     public bool isAlive = true;
     public Vector2 groundCheckerSize;
     public Vector2 wallCheckerSize;
+    public SpriteRenderer playerSprite;
 
     [Header("Checkers")]
     [Space]
@@ -164,7 +165,7 @@ public class PlayerControler : MonoBehaviour
     {
         isAlive = false;
         GetComponent<BoxCollider2D>().enabled = false;
-        GetComponent<SpriteRenderer>().enabled = false;
+        playerSprite.enabled = false;
         //sprite2.enabled = false;
         onDeadEvent.Invoke();
         Destroy(gameObject, 3f);
