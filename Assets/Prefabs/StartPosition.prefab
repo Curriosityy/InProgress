@@ -51,7 +51,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20a1da37844f71443b4aeade77a2e4da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerPrefab: {fileID: 1580576391355882, guid: af5be3275888fae47a3b387a4747c144,
+  playerPrefab: {fileID: 1068769428897404, guid: af5be3275888fae47a3b387a4747c144,
     type: 2}
   cameraTransform: {fileID: 0}
   parent: {fileID: 0}
+  tc: {fileID: 0}
+  timeToNextSpawn: 2

@@ -14,7 +14,6 @@ public class PlayerControler : MonoBehaviour
     private bool isOnWall = false;
     private bool isGrounded = true;
     private bool isFalling = false;
-
     public float speed;
     public float jumpForce;
     public float movementSmoothing = 0.05f;

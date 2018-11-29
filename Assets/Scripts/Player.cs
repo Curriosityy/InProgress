@@ -37,12 +37,13 @@ public class Player : MonoBehaviour
 
     public void OnLand()
     {
-        Debug.Log("landed");
+        animator.SetTrigger("land");
         jumpCounter = 0;
     }
 
     public void OnWall()
     {
+        animator.SetTrigger("wall");
         jumpCounter = 0;
     }
 
