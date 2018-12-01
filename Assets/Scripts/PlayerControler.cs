@@ -104,9 +104,10 @@ public class PlayerControler : MonoBehaviour
             Debug.Log("bottom");
             if (!wasGrounded && wasFalling)
             {
-                Debug.Break();
-                Debug.Log(".");
-                onLandEvent.Invoke();
+                {
+                    Debug.Log(".");
+                    onLandEvent.Invoke();
+                }
             }
         }
         colliders = Physics2D.OverlapBoxAll(rightWallChecker.position, wallCheckerSize, 0, wallLayer);
@@ -116,7 +117,6 @@ public class PlayerControler : MonoBehaviour
             isOnWall = true;
             if (!wasOnWall && !wasGrounded)
             {
-                Debug.Break();
                 Debug.Log("..");
                 onWallEvent.Invoke();
             }
