@@ -10,6 +10,7 @@ public class NeedleSpawner : MonoBehaviour
     public float timeBetweenSpawn;
     public float needleSpeed;
     private float time;
+    public Collider2D smallNeedleCollider;
 
     // Use this for initialization
     private void Start()
@@ -31,5 +32,6 @@ public class NeedleSpawner : MonoBehaviour
     {
         GameObject spawned = Instantiate(needlePrefab, top.transform.position, transform.rotation, top.transform);
         Physics2D.IgnoreCollision(GetComponent<Collider2D>(), spawned.GetComponent<Collider2D>());
+        Physics2D.IgnoreCollision(smallNeedleCollider, spawned.GetComponent<Collider2D>());
     }
 }
