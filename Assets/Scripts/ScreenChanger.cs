@@ -39,6 +39,10 @@ public class ScreenChanger : MonoBehaviour
 
     public void FadeToLevel(int LevelBuildIndex)
     {
+        if (PlayerPrefs.GetInt("LevelReached") < LevelBuildIndex)
+        {
+            PlayerPrefs.SetInt("LevelReached", LevelBuildIndex);
+        }
         levelToLoad = LevelBuildIndex;
         animator.SetTrigger("Fade_out");
     }

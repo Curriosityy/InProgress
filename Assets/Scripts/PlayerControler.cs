@@ -35,6 +35,8 @@ public class PlayerControler : MonoBehaviour
 
     public LayerMask whatIsWall;
 
+    public LayerMask wallLayer;
+
     [Header("Events")]
     [Space]
     public UnityEvent onLandEvent;
@@ -82,50 +84,43 @@ public class PlayerControler : MonoBehaviour
         Gizmos.DrawWireCube(rightWallChecker.transform.position, wallCheckerSize);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.layer == (int)Mathf.Log(whatIsGround.value, 2))
-        {
-            onLandEvent.Invoke();
-        }
-        else if (collision.gameObject.layer == (int)Mathf.Log(whatIsWall.value, 2) && !isGrounded)
-        {
-            onWallEvent.Invoke();
-        }
-    }
-
     private void FixedUpdate()
     {
-        //bool wasFalling = isFalling;
+        bool wasFalling = isFalling;
         bool wasGrounded = isGrounded;
-        //bool wasOnWall = isOnWall;
+        bool wasOnWall = isOnWall;
         isGrounded = false;
-        //isOnWall = false;
+        isOnWall = false;
+        isFalling = true;
+        if (Mathf.Sign(Physics2D.gravity.y) == Mathf.Sign(rb.velocity.y))
+        {
+            isFalling = true;
+        }
 
-        Collider2D[] colliders = Physics2D.OverlapBoxAll(grounChecker.position, groundCheckerSize, 0, whatIsGround);
+        Collider2D[] colliders = Physics2D.OverlapBoxAll(grounChecker.position, groundCheckerSize, 0, wallLayer);
         for (int i = 0; i < colliders.Length; i++)
         {
             isGrounded = true;
+            Debug.Log("bottom");
+            if (!wasGrounded && wasFalling)
+            {
+                Debug.Break();
+                Debug.Log(".");
+                onLandEvent.Invoke();
+            }
         }
-        /*
-        colliders = Physics2D.OverlapBoxAll(leftWallChecker.position, wallCheckerSize, 0, whatIsWall);
+        colliders = Physics2D.OverlapBoxAll(rightWallChecker.position, wallCheckerSize, 0, wallLayer);
         for (int i = 0; i < colliders.Length; i++)
         {
+            Debug.Log("right");
             isOnWall = true;
-            if (!wasOnWall)
+            if (!wasOnWall && !wasGrounded)
             {
+                Debug.Break();
+                Debug.Log("..");
                 onWallEvent.Invoke();
             }
         }
-        colliders = Physics2D.OverlapBoxAll(rightWallChecker.position, wallCheckerSize, 0, whatIsWall);
-        for (int i = 0; i < colliders.Length; i++)
-        {
-            isOnWall = true;
-            if (!wasOnWall)
-            {
-                onWallEvent.Invoke();
-            }
-        }*/
     }
 
     public void Move(float move, bool jump)
@@ -143,8 +138,9 @@ public class PlayerControler : MonoBehaviour
                 Debug.Log("JUMP2");
                 rb.velocity = new Vector2(rb.velocity.x, 0);
                 rb.AddForce(Vector2.up * jumpForce);
-                isGrounded = false;
                 onJump.Invoke();
+                isGrounded = false;
+                isFalling = false;
             }
             if (facingRight && move < 0)
             {

@@ -134,7 +134,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1904045515543702}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.281, y: 0, z: 0}
+  m_LocalPosition: {x: -0.288, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4904834802917720}
@@ -160,7 +160,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1972310300080518}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.309, z: 0}
+  m_LocalPosition: {x: 0, y: -0.308, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4904834802917720}
@@ -199,7 +199,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1068769428897404}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -176.24, y: 0.02, z: 0}
+  m_LocalPosition: {x: -5.5270634, y: -3.5732179, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4613617322365110}
@@ -319,8 +319,8 @@ MonoBehaviour:
   jumpForce: 1100
   movementSmoothing: 0.05
   isAlive: 1
-  groundCheckerSize: {x: 0.65, y: 0.12}
-  wallCheckerSize: {x: 0.16, y: 0.65}
+  groundCheckerSize: {x: 0.62, y: 0.12}
+  wallCheckerSize: {x: 0.16, y: 0.62}
   playerSprite: {fileID: 212436589406577644}
   grounChecker: {fileID: 4613617322365110}
   leftWallChecker: {fileID: 4137651070157058}
@@ -329,6 +329,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   whatIsWall:
+    serializedVersion: 2
+    m_Bits: 512
+  wallLayer:
     serializedVersion: 2
     m_Bits: 512
   onLandEvent:
