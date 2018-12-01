@@ -5,17 +5,30 @@ using UnityEngine;
 public class MenuControler : MonoBehaviour
 {
     private Camera mainCamera;
-    public Transform[] transforms;
+    private int activePanel = 0;
+    public GameObject[] menuPanels;
 
     private void Start()
     {
-        mainCamera = Camera.main;
-        mainCamera.transform.position = new Vector3(transforms[0].position.x, transforms[0].position.y, mainCamera.transform.position.z);
+        for (int i = 0; menuPanels.Length > i; i++)
+        {
+            menuPanels[i].SetActive(false);
+        }
+        menuPanels[0].SetActive(true);
+        activePanel = 0;
     }
 
-    public void GoToIMenu(int i)
+    public void GoToIMenu(int activate)
     {
-        mainCamera.transform.position = new Vector3(transforms[i].position.x, transforms[i].position.y, mainCamera.transform.position.z);
+        menuPanels[activePanel].SetActive(false);
+        menuPanels[activate].SetActive(true);
+        activePanel = activate;
+    }
+
+    public void GoToIMenu(Vector2Int vector2)
+    {
+        menuPanels[vector2.x].SetActive(false);
+        menuPanels[vector2.y].SetActive(true);
     }
 
     public void ExitApplication()

@@ -30,5 +30,6 @@ public class NeedleSpawner : MonoBehaviour
     private void SpawnNeedle()
     {
         GameObject spawned = Instantiate(needlePrefab, top.transform.position, transform.rotation, top.transform);
+        Physics2D.IgnoreCollision(GetComponent<Collider2D>(), spawned.GetComponent<Collider2D>());
     }
 }
