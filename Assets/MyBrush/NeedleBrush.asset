@@ -11,6 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d5751a2c961df945a34295ccf5e576d, type: 3}
   m_Name: NeedleBrush
   m_EditorClassIdentifier: 
-  m_Prefabs: []
+  m_Prefabs:
+  - {fileID: 1008240107843696, guid: d70ce32b753acc0498e7cef21beb28df, type: 2}
   m_PerlinScale: 0.5
   m_Z: 0
