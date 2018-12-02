@@ -33,6 +33,7 @@ public class PlayerCreator : MonoBehaviour
     public IEnumerator PlayAgain()
     {
         yield return new WaitForSeconds(timeToNextSpawn);
+        GameMaster.gameMaster.GetComponent<ResetKeysAndDoors>().ReenableKeysAndDoors();
         InstantiatePlayer();
     }
 

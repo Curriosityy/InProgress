@@ -38,6 +38,8 @@ GameObject:
   - component: {fileID: 4736154037113496}
   - component: {fileID: 114760098074327474}
   - component: {fileID: 95656134645172146}
+  - component: {fileID: 114073462382637236}
+  - component: {fileID: 114657706315914588}
   m_Layer: 0
   m_Name: GameMaster
   m_TagString: Untagged
@@ -95,6 +97,17 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114073462382637236
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1613027353230842}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2badd3cd20c2ed84fa0618495e51b1f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114531120883706688
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -132,6 +145,17 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
+--- !u!114 &114657706315914588
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1613027353230842}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3c1f0cf9a00ed042a2a249e7d3bd263, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114760098074327474
 MonoBehaviour:
   m_ObjectHideFlags: 1

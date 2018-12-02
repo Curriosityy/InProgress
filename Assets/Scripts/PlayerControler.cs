@@ -155,6 +155,10 @@ public class PlayerControler : MonoBehaviour
 
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            Die();
+        }
     }
 
     public void Die()

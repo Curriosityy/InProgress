@@ -54,8 +54,8 @@ GameObject:
   - component: {fileID: 4121886809003888}
   - component: {fileID: 212897006434364976}
   - component: {fileID: 60401216964174960}
-  - component: {fileID: 114298446140131140}
   - component: {fileID: 95726149839797978}
+  - component: {fileID: 114367772242907428}
   m_Layer: 0
   m_Name: needle
   m_TagString: Untagged
@@ -96,7 +96,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1203284387105664}
   m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -51.499996, y: 12.5, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4012873866021054}
@@ -194,7 +194,9 @@ MonoBehaviour:
   top: {fileID: 1659114492346956}
   timeBetweenSpawn: 1.5
   needleSpeed: 0
---- !u!114 &114298446140131140
+  delayToFirstShoot: 0
+  smallNeedleCollider: {fileID: 60401216964174960}
+--- !u!114 &114367772242907428
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -202,7 +204,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1810452687137732}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6271ea566d0d7474789645f6135e510d, type: 3}
+  m_Script: {fileID: 11500000, guid: 412f253a436bfd046ab81a9e81dc763a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!212 &212611704139131758

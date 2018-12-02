@@ -21,7 +21,7 @@ public class ParticlesCollison : MonoBehaviour
         {
             Debug.Log(other.name);
             Debug.DrawLine(transform.position, pcevent.intersection);
-            Instantiate(bloodPrefab, pcevent.intersection, Quaternion.identity, null);
+            Instantiate(bloodPrefab, pcevent.intersection, Quaternion.identity, other.transform);
             // other.GetComponentInChildren<SpriteRenderer>().sprite.texture.SetPixel(pcevent.intersection.x,pcevent.intersection.y,)
         }
         //Debug.Break();

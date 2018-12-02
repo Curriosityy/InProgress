@@ -10,22 +10,35 @@ public class NeedleSpawner : MonoBehaviour
     public float timeBetweenSpawn;
     public float needleSpeed;
     private float time;
+    private bool startedCR = false;
+    public float delayToFirstShoot = 0;
     public Collider2D smallNeedleCollider;
 
     // Use this for initialization
     private void Start()
     {
+        time -= delayToFirstShoot;
     }
 
     // Update is called once per frame
     private void Update()
     {
-        time += Time.deltaTime;
-        if (timeBetweenSpawn <= time)
+        if (!startedCR)
         {
-            SpawnNeedle();
-            time = 0;
+            time += Time.deltaTime;
+            if (timeBetweenSpawn <= time)
+            {
+                startedCR = true;
+                StartCoroutine(CouSpewnNeedle());
+            }
         }
+    }
+
+    private IEnumerator CouSpewnNeedle()
+    {
+        SpawnNeedle();
+        yield return new WaitForSeconds(timeBetweenSpawn);
+        StartCoroutine(CouSpewnNeedle());
     }
 
     private void SpawnNeedle()

@@ -5,32 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class ScreenChanger : MonoBehaviour
 {
-    private static GameObject _gameMaster = null;
-
-    public static GameObject gameMaster
-    {
-        get
-        {
-            return _gameMaster;
-        }
-    }
-
     // Use this for initialization
     public Animator animator;
 
     private int levelToLoad;
-
-    private void Awake()
-    {
-        if (_gameMaster == null)
-        {
-            _gameMaster = gameObject;
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-    }
 
     private void Start()
     {

@@ -20,7 +20,7 @@ public class MetaControler : MonoBehaviour
         {
             onPlayerEntered = new UnityIntEvent();
         }
-        onPlayerEntered.AddListener(ScreenChanger.gameMaster.GetComponent<ScreenChanger>().FadeToLevel);
+        onPlayerEntered.AddListener(GameMaster.gameMaster.GetComponent<ScreenChanger>().FadeToLevel);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
