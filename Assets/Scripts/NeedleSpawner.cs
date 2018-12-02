@@ -17,7 +17,6 @@ public class NeedleSpawner : MonoBehaviour
     // Use this for initialization
     private void Start()
     {
-        time -= delayToFirstShoot;
     }
 
     // Update is called once per frame
@@ -26,7 +25,7 @@ public class NeedleSpawner : MonoBehaviour
         if (!startedCR)
         {
             time += Time.deltaTime;
-            if (timeBetweenSpawn <= time)
+            if (delayToFirstShoot <= time)
             {
                 startedCR = true;
                 StartCoroutine(CouSpewnNeedle());
@@ -39,6 +38,7 @@ public class NeedleSpawner : MonoBehaviour
         SpawnNeedle();
         yield return new WaitForSeconds(timeBetweenSpawn);
         StartCoroutine(CouSpewnNeedle());
+        yield return null;
     }
 
     private void SpawnNeedle()
