@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class LevelSelector : MonoBehaviour
 {
     public Button[] levels;
+    private GameMaster gm;
 
     // Use this for initialization
     private void Start()
@@ -21,6 +22,12 @@ public class LevelSelector : MonoBehaviour
         {
             levels[i].interactable = false;
         }
+        gm = GameMaster.gameMaster.GetComponent<GameMaster>();
+    }
+
+    public void changeScreen(int levelBuildIndex)
+    {
+        gm.GetComponent<ScreenChanger>().FadeToLevel(levelBuildIndex);
     }
 
     // Update is called once per frame

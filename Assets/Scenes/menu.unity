@@ -538,12 +538,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ShowMaskGraphic: 0
---- !u!114 &330959101 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 114760098074327474, guid: 25ea705cb87f37f439ea94c3770330b3,
-    type: 2}
-  m_PrefabInternal: {fileID: 1517515721}
-  m_Script: {fileID: 11500000, guid: 558b325df73007540bbe9bbb5d06643f, type: 3}
 --- !u!1 &361846529
 GameObject:
   m_ObjectHideFlags: 0
@@ -620,8 +614,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 330959101}
-        m_MethodName: FadeToLevel
+      - m_Target: {fileID: 804609552}
+        m_MethodName: changeScreen
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -927,8 +921,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 330959101}
-        m_MethodName: FadeToLevel
+      - m_Target: {fileID: 804609552}
+        m_MethodName: changeScreen
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1050,8 +1044,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 330959101}
-        m_MethodName: FadeToLevel
+      - m_Target: {fileID: 804609552}
+        m_MethodName: changeScreen
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2100,8 +2094,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 330959101}
-        m_MethodName: FadeToLevel
+      - m_Target: {fileID: 804609552}
+        m_MethodName: changeScreen
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2999,8 +2993,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 330959101}
-        m_MethodName: FadeToLevel
+      - m_Target: {fileID: 804609552}
+        m_MethodName: changeScreen
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
