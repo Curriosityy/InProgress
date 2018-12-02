@@ -1796,6 +1796,11 @@ Prefab:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 180
       objectReference: {fileID: 0}
+    - target: {fileID: 114090591518874164, guid: 5ba666c5bf3e51840835004f1f74b3bd,
+        type: 2}
+      propertyPath: timeBetweenSpawn
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5ba666c5bf3e51840835004f1f74b3bd, type: 2}
   m_IsPrefabAsset: 0
@@ -2861,7 +2866,12 @@ Prefab:
     - target: {fileID: 114090591518874164, guid: 5ba666c5bf3e51840835004f1f74b3bd,
         type: 2}
       propertyPath: delayToFirstShoot
-      value: 0.75
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114090591518874164, guid: 5ba666c5bf3e51840835004f1f74b3bd,
+        type: 2}
+      propertyPath: timeBetweenSpawn
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5ba666c5bf3e51840835004f1f74b3bd, type: 2}
@@ -5841,11 +5851,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4586290647997494, guid: 599bbb6a83c862843a7e57f076e8ba14, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 14.5
+      value: -14.5
       objectReference: {fileID: 0}
     - target: {fileID: 4586290647997494, guid: 599bbb6a83c862843a7e57f076e8ba14, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0.5
+      value: -12.5
       objectReference: {fileID: 0}
     - target: {fileID: 4586290647997494, guid: 599bbb6a83c862843a7e57f076e8ba14, type: 2}
       propertyPath: m_LocalPosition.z
