@@ -137,7 +137,7 @@ public class PlayerControler : MonoBehaviour
             {
                 Debug.Log("JUMP2");
                 rb.velocity = new Vector2(rb.velocity.x, 0);
-                rb.AddForce(Vector2.up * jumpForce);
+                rb.AddForce(transform.up * jumpForce);
                 onJump.Invoke();
                 isGrounded = false;
                 isFalling = false;
@@ -177,5 +177,18 @@ public class PlayerControler : MonoBehaviour
         Vector3 tran = transform.localScale;
         tran.x *= -1;
         transform.localScale = tran;
+    }
+
+    public void UpSideDown()
+    {
+        Physics2D.gravity *= -1;
+        Vector3 temp = transform.rotation.eulerAngles;
+        temp.z += 180;
+        transform.rotation = Quaternion.Euler(temp);
+        Vector3 tran = transform.localScale;
+        tran.x *= -1;
+        transform.localScale = tran;
+        isFalling = true;
+        isGrounded = false;
     }
 }

@@ -8,6 +8,8 @@ TagManager:
   - Ground
   - Ceil
   - player
+  - door
+  - key
   layers:
   - Default
   - TransparentFX

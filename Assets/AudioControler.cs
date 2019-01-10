@@ -9,6 +9,7 @@ public class AudioControler : MonoBehaviour
     private void Start()
     {
         DontDestroyOnLoad(gameObject);
+
         cam = Camera.main;
     }
 

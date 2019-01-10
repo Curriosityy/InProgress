@@ -16,6 +16,8 @@ public class Player : MonoBehaviour
     public ParticleSystem particleOnRun;
     public ParticleSystem particleOnJump;
     private Animator animator;
+    private AudioSource audioSource;
+    public AudioClip jumpClip, dieClip;
 
     private void FixedUpdate()
     {
@@ -33,6 +35,7 @@ public class Player : MonoBehaviour
         pc = GetComponent<PlayerControler>();
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        audioSource = GameMaster.gameMaster.GetComponent<GameMaster>().PlayerSource;
     }
 
     public void OnLand()
@@ -49,6 +52,7 @@ public class Player : MonoBehaviour
 
     public void OnDead()
     {
+        audioSource.PlayOneShot(dieClip);
         particleOnDead.Emit(80);
         if (!PlayerPrefs.HasKey("DeadCounter"))
         {
@@ -66,6 +70,7 @@ public class Player : MonoBehaviour
     public void onJump()
     {
         animator.SetTrigger("jump");
+        audioSource.PlayOneShot(jumpClip);
     }
 
     // Update is called once per frame
