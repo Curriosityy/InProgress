@@ -23,7 +23,7 @@ public class PauseControler : MonoBehaviour
 
     private void Awake()
     {
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
         if (pc == null)
         {
             pc = this;
